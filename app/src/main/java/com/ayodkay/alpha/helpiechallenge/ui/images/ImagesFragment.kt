@@ -1,4 +1,4 @@
-package com.ayodkay.alpha.helpiechallenge.ui.dashboard
+package com.ayodkay.alpha.helpiechallenge.ui.images
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ayodkay.alpha.helpiechallenge.R
 
-class DashboardFragment : Fragment() {
+class ImagesFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var imagesViewModel: ImagesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(this, Observer {
+        imagesViewModel =
+            ViewModelProviders.of(this).get(ImagesViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_images, container, false)
+        val textView: TextView = root.findViewById(R.id.text_home)
+        imagesViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root
