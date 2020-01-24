@@ -6,15 +6,19 @@
     app:startDestination="@+id/navigation_users">
 
     <fragment
-        android:id="@+id/navigation_users"
+        android:id="@+id/navigation_images"
         android:name="com.ayodkay.alpha.helpiechallenge.ui.images.ImagesFragment"
-        android:label="@string/title_users"
-        tools:layout="@layout/fragment_images" />
+        android:label="@string/title_photo"
+        tools:layout="@layout/fragment_images" >
+        <action
+            android:id="@+id/action_navigation_users_to_navigation_images"
+            app:destination="@id/navigation_images" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_images"
+        android:id="@+id/navigation_users"
         android:name="com.ayodkay.alpha.helpiechallenge.ui.users.UsersFragment"
-        android:label="@string/title_photo"
+        android:label="@string/title_users"
         tools:layout="@layout/fragment_users" />
 
 </navigation>
