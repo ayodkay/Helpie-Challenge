@@ -30,8 +30,8 @@ class ImagesViewModel : ViewModel() {
         val url = "https://jsonplaceholder.typicode.com/photos"
 
         val callBack = object:HttpCallback(){
-            override fun onSuccess(t: String?) {
-                val jsonArray = JSONArray(t)
+            override fun onSuccess(response: String?) {
+                val jsonArray = JSONArray(response)
                 _images?.value = jsonArray
             }
 

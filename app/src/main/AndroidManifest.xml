@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.images.ImageEnlarged"></activity>
+        <activity android:name=".ui.users.UsersPosts"></activity>
+        <activity android:name=".ui.images.ImageEnlarged" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

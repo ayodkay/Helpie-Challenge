@@ -1,7 +1,6 @@
 package com.ayodkay.alpha.helpiechallenge.adapters
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.view.LayoutInflater
@@ -31,7 +30,7 @@ class ImagesAdapter internal constructor(private val images:ArrayList<Images>):
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesModels {
         val view: View =
-            LayoutInflater.from(context).inflate(R.layout.images_album, parent, false)
+            LayoutInflater.from(context).inflate(R.layout.images_card, parent, false)
 
         return ImagesModels(view)
     }
