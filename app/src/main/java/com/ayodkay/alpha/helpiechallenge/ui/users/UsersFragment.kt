@@ -41,6 +41,8 @@ class UsersFragment : Fragment() {
                 hasFixedSize()
                 adapter = UsersAdapters(handleArray(it))
             }
+
+            user_progress.visibility = View.GONE
         })
 
         return root

@@ -35,6 +35,8 @@ class ImagesFragment : Fragment() {
 
             }
 
+            image_progress.visibility = View.GONE
+
         })
         return root
     }

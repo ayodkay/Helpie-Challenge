@@ -17,9 +17,9 @@ import com.ayodkay.alpha.helpiechallenge.ui.images.ImageEnlarged
 import com.squareup.picasso.Picasso
 
 class ImagesAdapter internal constructor(private val images:ArrayList<Images>):
-    RecyclerView.Adapter<ImagesAdapter.ImagesModels>() {
+    RecyclerView.Adapter<ImagesAdapter.ImagesHolder>() {
 
-    inner class ImagesModels(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class ImagesHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
         val albumTitle:TextView = itemView.findViewById(R.id.album_title)
 
@@ -28,11 +28,11 @@ class ImagesAdapter internal constructor(private val images:ArrayList<Images>):
         val imageTitle:TextView = itemView.findViewById(R.id.image_title)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesModels {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesHolder {
         val view: View =
             LayoutInflater.from(context).inflate(R.layout.images_card, parent, false)
 
-        return ImagesModels(view)
+        return ImagesHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -40,7 +40,7 @@ class ImagesAdapter internal constructor(private val images:ArrayList<Images>):
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: ImagesModels, position: Int) {
+    override fun onBindViewHolder(holder: ImagesHolder, position: Int) {
         val imagesPosition = images[position]
 
         Picasso.get().load(imagesPosition.thumbnailUrl).into(holder.image)
