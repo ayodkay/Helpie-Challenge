@@ -15,9 +15,7 @@ import com.ayodkay.alpha.helpiechallenge.models.Company
 import com.ayodkay.alpha.helpiechallenge.models.Geo
 import com.ayodkay.alpha.helpiechallenge.models.Users
 import kotlinx.android.synthetic.main.fragment_users.*
-import kotlinx.android.synthetic.main.users_card.*
 import org.json.JSONArray
-import java.util.*
 import kotlin.Comparator
 import kotlin.collections.ArrayList
 
@@ -34,7 +32,7 @@ class UsersFragment : Fragment() {
             ViewModelProvider(this).get(UsersViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_users, container, false)
 
-        usersViewModel.getUsers().observe(this, Observer {
+        usersViewModel.getUsers().observe(viewLifecycleOwner, Observer {
 
             users_recycler.apply {
                 layoutManager = LinearLayoutManager(context)

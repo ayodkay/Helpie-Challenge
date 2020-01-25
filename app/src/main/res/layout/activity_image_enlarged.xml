@@ -8,6 +8,12 @@
     tools:context=".ui.images.ImageEnlarged">
 
 
+    <ProgressBar
+        android:id="@+id/image_enlarged_progress"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <ImageView
         android:id="@+id/image_enlarged"
         android:layout_width="match_parent"

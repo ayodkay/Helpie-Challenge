@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_users, R.id.navigation_images
             )
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }

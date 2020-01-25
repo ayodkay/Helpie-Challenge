@@ -1,19 +1,16 @@
 package com.ayodkay.alpha.helpiechallenge.ui.users
 
 import android.widget.Toast
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ayodkay.alpha.helpiechallenge.App
 import com.ayodkay.alpha.helpiechallenge.App.Companion.context
-import com.ayodkay.alpha.helpiechallenge.models.Users
 import com.kymjs.rxvolley.RxVolley
 import com.kymjs.rxvolley.client.HttpCallback
 import org.json.JSONArray
-import org.json.JSONObject
 
 class UsersViewModel : ViewModel() {
     private var _users:MutableLiveData<JSONArray>? = null
+    private var _usersPost:MutableLiveData<JSONArray>? = null
 
     // get all the loaded users
     fun getUsers():MutableLiveData<JSONArray> {
@@ -23,6 +20,7 @@ class UsersViewModel : ViewModel() {
         }
         return _users!!
     }
+
     //load all users Asynchronously
     private fun loadUsers(){
 
@@ -50,8 +48,6 @@ class UsersViewModel : ViewModel() {
             .doTask()
     }
 
-
-    private var _usersPost:MutableLiveData<JSONArray>? = null
 
     // get all the loaded users post
     fun getUsersPost(id:Int):MutableLiveData<JSONArray> {

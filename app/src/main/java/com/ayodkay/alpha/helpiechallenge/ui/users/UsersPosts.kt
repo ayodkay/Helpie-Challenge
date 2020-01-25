@@ -14,8 +14,7 @@ import org.json.JSONArray
 
 class UsersPosts : AppCompatActivity() {
 
-
-    lateinit var usersViewModel: UsersViewModel
+    private lateinit var usersViewModel: UsersViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,13 +27,11 @@ class UsersPosts : AppCompatActivity() {
 
 
         usersViewModel.getUsersPost(userId).observe(this, Observer {
-
             post_recycler.apply {
                 layoutManager = LinearLayoutManager(this@UsersPosts)
                 hasFixedSize()
                 adapter = PostsAdapter(handlePost(it))
             }
-
             post_progress.visibility = View.GONE
 
         })

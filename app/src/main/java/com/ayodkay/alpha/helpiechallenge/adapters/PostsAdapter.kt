@@ -14,14 +14,12 @@ class PostsAdapter internal constructor(private val postsList: ArrayList<Posts>)
     RecyclerView.Adapter<PostsAdapter.PostViewHolder>(){
 
     inner class PostViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-
         val postid : TextView = itemView.findViewById(R.id.postId)
         val postTitle : TextView = itemView.findViewById(R.id.postTitle)
         val postBody : TextView = itemView.findViewById(R.id.postBody)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-
         val view = LayoutInflater.
             from(context).inflate(R.layout.post_card,parent,false)
 

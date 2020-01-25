@@ -16,7 +16,6 @@ class UsersAdapters internal constructor(private val userList: ArrayList<Users>)
     RecyclerView.Adapter<UsersAdapters.UsersHolder>() {
 
     inner class UsersHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-
         val ids: TextView = itemView.findViewById(R.id.userId)
         val names : TextView = itemView.findViewById(R.id.name)
         val emails : TextView = itemView.findViewById(R.id.email)
@@ -37,7 +36,6 @@ class UsersAdapters internal constructor(private val userList: ArrayList<Users>)
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: UsersHolder, position: Int) {
         val userPosition = userList[position]
-
         with(userPosition){
             with(holder){
                 ids.text = "User ID: $id"

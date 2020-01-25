@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,9 @@ import com.ayodkay.alpha.helpiechallenge.App.Companion.context
 import com.ayodkay.alpha.helpiechallenge.R
 import com.ayodkay.alpha.helpiechallenge.models.Images
 import com.ayodkay.alpha.helpiechallenge.ui.images.ImageEnlarged
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
+import java.lang.Exception
 
 class ImagesAdapter internal constructor(private val images:ArrayList<Images>):
     RecyclerView.Adapter<ImagesAdapter.ImagesHolder>() {
@@ -26,6 +29,8 @@ class ImagesAdapter internal constructor(private val images:ArrayList<Images>):
         val image:ImageView = itemView.findViewById(R.id.image)
 
         val imageTitle:TextView = itemView.findViewById(R.id.image_title)
+
+        val picassoProgress:ProgressBar = itemView.findViewById(R.id.picassoProgress)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesHolder {
@@ -43,17 +48,32 @@ class ImagesAdapter internal constructor(private val images:ArrayList<Images>):
     override fun onBindViewHolder(holder: ImagesHolder, position: Int) {
         val imagesPosition = images[position]
 
-        Picasso.get().load(imagesPosition.thumbnailUrl).into(holder.image)
-        holder.albumTitle.text = "album: ${imagesPosition.albumId}"
-        holder.imageTitle.text = imagesPosition.title
+        with(holder){
+            with(imagesPosition){
+                Picasso.get().load(thumbnailUrl).into(image, object :Callback{
+                    override fun onSuccess() {
+                        picassoProgress.visibility = View.GONE
+                    }
 
-        holder.itemView.setOnClickListener {
-            Toast.makeText(context,imagesPosition.id.toString(),Toast.LENGTH_LONG).show()
+                    override fun onError(e: Exception?) {
+                        Toast.makeText(context,e!!.message.toString(),Toast.LENGTH_LONG).show()
+                    }
 
-            context.startActivity(Intent(context,ImageEnlarged::class.java).apply {
-                putExtra("url",imagesPosition.url)
-                flags = FLAG_ACTIVITY_NEW_TASK
-            })
+                })
+
+                albumTitle.text = "album: $albumId"
+                imageTitle.text = title
+
+                itemView.setOnClickListener {
+                    Toast.makeText(context,id.toString(),Toast.LENGTH_LONG).show()
+
+                    context.startActivity(Intent(context,ImageEnlarged::class.java).apply {
+                        putExtra("url",url)
+                        flags = FLAG_ACTIVITY_NEW_TASK
+                    })
+                }
+
+            }
         }
 
     }

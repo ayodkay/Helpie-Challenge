@@ -34,9 +34,7 @@ class ImagesFragment : Fragment() {
                 adapter = ImagesAdapter(handleArray(it))
 
             }
-
             image_progress.visibility = View.GONE
-
         })
         return root
     }

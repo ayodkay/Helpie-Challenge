@@ -10,6 +10,7 @@ class App : Application(){
         context = applicationContext
     }
 
+
     companion object{
         lateinit var context:Context
     }
