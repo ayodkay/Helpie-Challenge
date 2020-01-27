@@ -74,7 +74,7 @@ class UsersFragment : Fragment() {
             val lat = geoObj.getString("lat").toDouble()
             val lng = geoObj.getString("lng").toDouble()
             val geo = Geo(lat,lng)
-            val address = Address(street,city,suite,zipCode,geo)
+            val address = Address(street,suite,city,zipCode,geo)
 
             usersList.add(Users(id,name,username,email,address,phone,website,company))
 
